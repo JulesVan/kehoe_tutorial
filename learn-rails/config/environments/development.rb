@@ -27,20 +27,20 @@ LearnRails::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.smtpm_settings = {
+  config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: ENF["DOMAIN_NAME"],
+    domain: ENV["DOMAIN_NAME"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENF["GMAIL_USERNAME"],
-    password ENV["GMAIL_PASSWORD"]
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
-  # Action Mailer Config
-  config action_mailer.default_url_options = { :host => 
-    'localhost:3000' }
-  config.action_mailer.deliver_method = :smtp
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
+
 
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
